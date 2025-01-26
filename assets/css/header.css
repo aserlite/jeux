@@ -1,14 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    font-family: 'Press Start 2P', cursive;
     background-color: #f0f8ff;
+    overflow: hidden;
 }
 body::before {
     content: "";
@@ -26,27 +24,30 @@ body::before {
     pointer-events: none;
     z-index: 1000;
 }
-h1 {
-    margin-bottom: 20px;
+
+header {
+    outline: 2.5px solid #333;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    box-shadow: 10px 10px #333;
+    transition: .5s;
+}
+header:hover {
+    box-shadow: 5px 5px #333;
+
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin: 20px 0;
-}
-
-a {
+header a {
+    color: #333;
     text-decoration: none;
-    color: #007bff;
     font-size: 18px;
-    font-weight: bold;
-    text-transform: capitalize;
+    margin-left: 10px;
 }
 
-a:hover {
-    text-decoration: underline;
+
+main {
+    padding: 20px;
 }

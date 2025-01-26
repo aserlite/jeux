@@ -12,9 +12,12 @@
     <?php
     $directory = './';
     $files = scandir($directory);
+    unset($files[array_search("index.php", $files)]);
+    unset($files[array_search("header.php", $files)]);
+    unset($files[array_search("footer.php", $files)]);
 
     foreach ($files as $file) {
-        if (pathinfo($file, PATHINFO_EXTENSION) === 'html') {
+        if (pathinfo($file, PATHINFO_EXTENSION) === 'php') {
             $fileNameWithoutExtension = pathinfo($file, PATHINFO_FILENAME);
             echo "<li><a href='$file'>" . htmlspecialchars($fileNameWithoutExtension) . "</a></li>";
         }

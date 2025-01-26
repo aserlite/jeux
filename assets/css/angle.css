@@ -1,4 +1,4 @@
-body {
+main {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -6,7 +6,6 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f8ff;
 }
 
 h1 {

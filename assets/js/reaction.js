@@ -27,6 +27,10 @@ gameScreen.addEventListener('click', () => {
         averageDisplay.textContent = `Temps moyen: ${calculateAverage(reactionTimes)} ms`;
         waiting = false;
     } else {
+        if (gameScreen.style.backgroundColor === 'red') {
+            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+            return;
+        }
         gameScreen.textContent = 'Patientez...';
         message.textContent = '';
         gameScreen.style.backgroundColor = 'red';

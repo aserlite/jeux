@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Guess</title>
-    <link rel="stylesheet" href="assets/css/couleurs.css">
-    <script src="assets/js/couleurs.js" defer></script>
-</head>
-<body>
+<?php
+$pageTitle = 'Color Guess ';
+$cssfile= "couleurs.css";
+$jsfile= "couleurs.js";
+include 'header.php';
+?>
+
     <div class="game-container">
         <h1 id="color-code">#FFFFFF</h1>
         <div class="controls">
@@ -22,5 +19,4 @@
         <div class="score" id="score">Score: 0</div>
         <div class="color-buttons" id="color-buttons"></div>
     </div>
-</body>
-</html>
+<?php include 'footer.php'?>
