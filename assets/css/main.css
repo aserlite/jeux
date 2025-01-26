@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     margin: 0;
     padding: 0;
     display: flex;
@@ -26,27 +27,45 @@ body::before {
     pointer-events: none;
     z-index: 1000;
 }
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../staticnoise.gif') center/cover no-repeat;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1001;
+    animation: static-noise 0.3s steps(10) infinite;
+}
+
 h1 {
     margin-bottom: 20px;
+    font-family: 'Press Start 2P', cursive;
 }
 
 ul {
     list-style-type: none;
+    font-family: 'Press Start 2P', cursive;
     padding: 0;
+    background: #0A65F3;
 }
 
 li {
-    margin: 20px 0;
+    padding: 1rem 5rem 1rem .5rem;
+    text-transform: uppercase;
 }
-
+li:hover {
+    background: #12ADBD;
+    border-radius: 5px;
+}
 a {
     text-decoration: none;
-    color: #007bff;
+    color: #fff;
     font-size: 18px;
     font-weight: bold;
     text-transform: capitalize;
-}
-
-a:hover {
-    text-decoration: underline;
 }

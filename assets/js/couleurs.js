@@ -19,11 +19,6 @@ function getRandomColor() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-function colorToHex(color) {
-    const rgb = color.match(/\d+/g).map(Number);
-    return `#${rgb.map(x => x.toString(16).padStart(2, '0')).join('')}`.toUpperCase();
-}
-
 function generateColors(baseColor, difficulty) {
     const baseRgb = baseColor.match(/\d+/g).map(Number);
     const colors = [baseColor];
@@ -43,12 +38,11 @@ function generateColors(baseColor, difficulty) {
 
 function startGame() {
     const difficulty = parseInt(difficultySelect.value, 10);
-    const points = difficulty === 50 ? 1 : difficulty === 30 ? 3 : 10;
+    const points = difficulty === 200 ? 1 : difficulty === 100 ? 3 : 10;
     correctColor = getRandomColor();
     const colors = generateColors(correctColor, difficulty);
-    const correctHex = colorToHex(correctColor);
 
-    colorCodeElement.textContent = correctHex;
+    colorCodeElement.textContent = correctColor;
     colorButtonsContainer.innerHTML = '';
 
     colors.forEach(color => {
