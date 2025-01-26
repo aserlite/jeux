@@ -1,14 +1,3 @@
-main {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
-}
 .game-container {
     text-align: center;
 }
