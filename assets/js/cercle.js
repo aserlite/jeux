@@ -2,29 +2,76 @@ const canvas = document.getElementById('drawingCanvas');
 const ctx = canvas.getContext('2d');
 let isDrawing = false;
 let points = [];
+const MINIMUM_RADIUS = 50;
 
-canvas.addEventListener('mousedown', (e) => {
+function getEventCoords(e) {
+    if (e.touches && e.touches[0]) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: e.touches[0].clientX - rect.left,
+            y: e.touches[0].clientY - rect.top
+        };
+    } else {
+        return {
+            x: e.offsetX,
+            y: e.offsetY
+        };
+    }
+}
+
+function startDrawing(e) {
+    const {x, y} = getEventCoords(e);
     isDrawing = true;
     points = [];
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
-    ctx.moveTo(e.offsetX, e.offsetY);
-    points.push({x: e.offsetX, y: e.offsetY});
-});
+    ctx.moveTo(x, y);
+    points.push({x, y});
+}
 
-canvas.addEventListener('mousemove', (e) => {
+function draw(e) {
     if (isDrawing) {
-        ctx.lineTo(e.offsetX, e.offsetY);
+        const {x, y} = getEventCoords(e);
+        ctx.lineTo(x, y);
         ctx.stroke();
-        points.push({x: e.offsetX, y: e.offsetY});
+        points.push({x, y});
     }
-});
+}
 
-canvas.addEventListener('mouseup', () => {
-    isDrawing = false;
-    ctx.closePath();
-    calculateScore();
-});
+function stopDrawing() {
+    if (isDrawing) {
+        isDrawing = false;
+        ctx.closePath();
+
+        if (isCircleBigEnough()) {
+            calculateScore();
+        } else {
+            document.getElementById('score').textContent = `Votre cercle est trop petit. Essayez encore !`;
+        }
+    }
+}
+
+function isCircleBigEnough() {
+    if (points.length < 2) return false;
+
+    let minX = points[0].x;
+    let maxX = points[0].x;
+    let minY = points[0].y;
+    let maxY = points[0].y;
+
+    points.forEach(point => {
+        if (point.x < minX) minX = point.x;
+        if (point.x > maxX) maxX = point.x;
+        if (point.y < minY) minY = point.y;
+        if (point.y > maxY) maxY = point.y;
+    });
+
+    const width = maxX - minX;
+    const height = maxY - minY;
+    const diameter = Math.max(width, height);
+
+    return diameter >= MINIMUM_RADIUS;
+}
 
 function calculateScore() {
     if (points.length < 2) return;
@@ -56,10 +103,27 @@ function calculateScore() {
 
     const score = Math.max(0, 100 - Math.sqrt(variance));
 
-    document.getElementById('score').textContent = `Your score: ${score.toFixed(2)}`;
+    document.getElementById('score').textContent = `Votre score : ${score.toFixed(2)}`;
 }
 
 function resetCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    document.getElementById('score').textContent = 'Your score: N/A';
+    document.getElementById('score').textContent = 'Votre score : N/A';
 }
+
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    startDrawing(e);
+});
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    draw(e);
+});
+canvas.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    stopDrawing(e);
+});
