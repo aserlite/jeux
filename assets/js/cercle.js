@@ -3,6 +3,7 @@ const ctx = canvas.getContext('2d');
 let isDrawing = false;
 let points = [];
 const MINIMUM_RADIUS = 50;
+const MINIMUM_DIVERSITY = 0.2;
 
 function getEventCoords(e) {
     if (e.touches && e.touches[0]) {
@@ -20,21 +21,21 @@ function getEventCoords(e) {
 }
 
 function startDrawing(e) {
-    const {x, y} = getEventCoords(e);
+    const { x, y } = getEventCoords(e);
     isDrawing = true;
     points = [];
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.moveTo(x, y);
-    points.push({x, y});
+    points.push({ x, y });
 }
 
 function draw(e) {
     if (isDrawing) {
-        const {x, y} = getEventCoords(e);
+        const { x, y } = getEventCoords(e);
         ctx.lineTo(x, y);
         ctx.stroke();
-        points.push({x, y});
+        points.push({ x, y });
     }
 }
 
@@ -43,10 +44,12 @@ function stopDrawing() {
         isDrawing = false;
         ctx.closePath();
 
-        if (isCircleBigEnough()) {
+        if (isCircleBigEnough() && isShapeDiverse()) {
             calculateScore();
-        } else {
+        } else if (!isCircleBigEnough()) {
             document.getElementById('score').textContent = `Votre cercle est trop petit. Essayez encore !`;
+        } else {
+            document.getElementById('score').textContent = `Tu joues a quoi fais un cercle on a dit !`;
         }
     }
 }
@@ -71,6 +74,29 @@ function isCircleBigEnough() {
     const diameter = Math.max(width, height);
 
     return diameter >= MINIMUM_RADIUS;
+}
+
+function isShapeDiverse() {
+    if (points.length < 3) return false;
+
+    let totalAngleChange = 0;
+
+    for (let i = 1; i < points.length - 1; i++) {
+        const dx1 = points[i].x - points[i - 1].x;
+        const dy1 = points[i].y - points[i - 1].y;
+        const dx2 = points[i + 1].x - points[i].x;
+        const dy2 = points[i + 1].y - points[i].y;
+
+        const angle1 = Math.atan2(dy1, dx1);
+        const angle2 = Math.atan2(dy2, dx2);
+
+        const angleChange = Math.abs(angle2 - angle1);
+        totalAngleChange += angleChange;
+    }
+
+    const averageAngleChange = totalAngleChange / (points.length - 2);
+
+    return averageAngleChange >= MINIMUM_DIVERSITY;
 }
 
 function calculateScore() {
