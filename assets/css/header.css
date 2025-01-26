@@ -7,6 +7,8 @@ body {
     font-family: 'Press Start 2P', cursive;
     background-color: #f0f8ff;
     overflow: hidden;
+    max-height: 100vh;
+    box-shadow: inset 5px 5px 20px 12px black, inset -5px -5px 20px 12px black;
 }
 body::before {
     content: "";
@@ -44,8 +46,8 @@ header {
     padding: 10px 20px;
     text-align: center;
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 50px;
+    left: 50px;
     box-shadow: 10px 10px #333;
     transition: .5s;
 }

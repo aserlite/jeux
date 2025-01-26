@@ -129,7 +129,7 @@ function calculateScore() {
 
     const score = Math.max(0, 100 - Math.sqrt(variance));
 
-    document.getElementById('score').textContent = `Votre score : ${score.toFixed(2)}`;
+    document.getElementById('score').textContent = `Votre score : ${score.toFixed(2)} %`;
 }
 
 function resetCanvas() {

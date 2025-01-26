@@ -10,6 +10,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     background-color: #f0f8ff;
+    box-shadow: inset 5px 5px 20px 12px black, inset -5px -5px 20px 12px black;
 }
 body::before {
     content: "";
