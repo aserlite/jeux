@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-<h1>Game Hub</h1>
+<h1>Les jeux la</h1>
 <ul>
     <?php
     $directory = './';
