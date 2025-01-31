@@ -10,9 +10,9 @@ include 'header.php';
         <div class="controls">
             <label for="difficulty">Niveau de difficulté :</label>
             <select id="difficulty">
-                <option value="50">Facile</option>
-                <option value="30">Moyen</option>
-                <option value="10">Difficile</option>
+                <option value="150">Facile</option>
+                <option value="75">Moyen</option>
+                <option value="30">Difficile</option>
             </select>
             <button onclick="startGame()" id="replay">Rejouer</button>
         </div>
