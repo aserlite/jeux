@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="assets/css/<?php echo $cssfile; ?>">
     <script src="assets/js/<?php echo $jsfile; ?>" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <meta http-equiv="Expires" content="Tue, 01 Jan 1995 12:12:12 GMT">
+    <meta http-equiv="Pragma" content="no-cache">
 
 </head>
 <body class="body_effects">
