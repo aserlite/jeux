@@ -10,7 +10,8 @@ body {
     max-height: 100vh;
     box-shadow: inset 5px 5px 20px 12px black, inset -5px -5px 20px 12px black;
 }
-body::before {
+
+.body_effects::before {
     content: "";
     position: fixed;
     top: 0;
@@ -28,7 +29,7 @@ body::before {
     animation: screen-flicker 0.5s infinite;
 }
 
-body::after {
+.body_effects::after {
     content: "";
     position: fixed;
     top: 0;
@@ -40,29 +41,26 @@ body::after {
     pointer-events: none;
     z-index: 1001;
 }
-
-header {
+header{
+    display: flex;
+    justify-content: space-between;
+        padding:40px 20px ;
+}
+header a{
     outline: 2.5px solid #333;
     padding: 10px 20px;
     text-align: center;
-    position: fixed;
-    top: 50px;
-    left: 50px;
     box-shadow: 10px 10px #333;
     transition: .5s;
-}
-header:hover {
-    box-shadow: 5px 5px #333;
-
-}
-
-header a {
     color: #333;
     text-decoration: none;
     font-size: 18px;
     margin-left: 10px;
 }
+header a:hover {
+    box-shadow: 5px 5px #333;
 
+}
 
 main {
     padding: 20px;
@@ -75,7 +73,6 @@ h1 {
 
 main {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
@@ -102,3 +99,8 @@ canvas {
     }
 }
 
+.check{
+    font-size: .5rem;
+    display: flex;
+    flex-direction: column;
+}
