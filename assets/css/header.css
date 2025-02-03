@@ -6,9 +6,6 @@ body {
     padding: 0;
     font-family: 'Press Start 2P', cursive;
     background-color: #f0f8ff;
-    overflow: hidden;
-    max-height: 100vh;
-    box-shadow: inset 5px 5px 20px 12px black, inset -5px -5px 20px 12px black;
 }
 
 .body_effects::before {
@@ -75,7 +72,6 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
 }

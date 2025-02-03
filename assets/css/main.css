@@ -13,8 +13,6 @@ body {
     color: #fff;
     text-align: center;
     position: relative;
-    box-shadow: inset 5px 5px 20px 12px black, inset -5px -5px 20px 12px black;
-    overflow: hidden;
 }
 
 .body_effects::before {
