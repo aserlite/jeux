@@ -18,6 +18,8 @@ gameScreen.addEventListener('click', () => {
     if (waiting) {
         const reactionTime = Date.now() - startTime;
         reactionTimes.push(reactionTime);
+        saveScore(reactionTime, "reaction","ms");
+
         localStorage.setItem('reactionTimes', JSON.stringify(reactionTimes));
 
         gameScreen.style.backgroundColor = 'red';

@@ -51,4 +51,6 @@ stopButton.addEventListener('click', () => {
                 Écart de ${difference.toFixed(2)} secondes.<br>
                 ${feedback}
             `;
+    saveScore(difference, "timer","ms");
+
 });

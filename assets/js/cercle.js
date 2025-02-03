@@ -128,6 +128,7 @@ function calculateScore() {
     const variance = varianceSum / points.length;
 
     const score = Math.max(0, 100 - Math.sqrt(variance));
+    saveScore(score, "cercle","%");
 
     document.getElementById('score').textContent = `Votre score : ${score.toFixed(2)} %`;
 }
