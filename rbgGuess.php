@@ -35,7 +35,7 @@ $targetBlue = rand(0, 255);
     let targetRed = <?= $targetRed ?>;
     let targetGreen = <?= $targetGreen ?>;
     let targetBlue = <?= $targetBlue ?>;
-
+    let tries = 0;
     function updateColor() {
         let r = document.getElementById('red').value;
         let g = document.getElementById('green').value;
@@ -54,8 +54,11 @@ $targetBlue = rand(0, 255);
         let diffB = Math.abs(targetBlue - b);
 
         let score = 100 - ((diffR + diffG + diffB) / (3 * 255)) * 100;
+        if(tries === 0){
+            saveScore(score, "RGB Guess","%");
+        }
         score = Math.max(0, score.toFixed(2));
-
+        tries++;
         document.getElementById('result').innerText = `Ressemblance : ${score}%`;
     }
 
@@ -66,7 +69,7 @@ $targetBlue = rand(0, 255);
         let diffR = Math.abs(targetRed - r);
         let diffG = Math.abs(targetGreen - g);
         let diffB = Math.abs(targetBlue - b);
-
+        tries = 0;
         let score = 100 - ((diffR + diffG + diffB) / (3 * 255)) * 100;
         score = Math.max(0, score.toFixed(2));
         alert(`Couleur cible: rgb(${targetRed}, ${targetGreen}, ${targetBlue})\n` +

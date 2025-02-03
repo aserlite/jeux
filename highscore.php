@@ -40,7 +40,7 @@ $games = $gamesStmt->fetchAll(PDO::FETCH_COLUMN);
 
         foreach ($scores as $row): ?>
             <tr>
-                <td><?= htmlspecialchars($row['pseudo']) ?></td>
+                <td><?= urldecode($row['pseudo']) ?></td>
                 <td><?= $row['score'] ?> <?= $row['unit'] ?></td>
             </tr>
         <?php endforeach; ?>
