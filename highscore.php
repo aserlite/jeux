@@ -9,9 +9,13 @@ $user = $env['DB_USERNAME'];
 $password = $env['DB_PASSWORD'];
 $dbname = $env['DB_DATABASE'];
 
-$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
 
-// Récupérer la liste des jeux distincts
 $gamesStmt = $pdo->query("SELECT DISTINCT jeu FROM scores");
 $games = $gamesStmt->fetchAll(PDO::FETCH_COLUMN);
 
