@@ -13,16 +13,20 @@ if (pseudo==="null") {
     document.cookie = `pseudo=${pseudo}`;
 }
 function saveScore(score, jeu, unit) {
-    fetch('savescore.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `pseudo=${encodeURIComponent(pseudo)}&score=${score}&unit=${encodeURIComponent(unit)}&jeu=${encodeURIComponent(jeu)}`
-    })
-        .then(response => response.text())
-        .then(data => {
-            console.log("Score enregistré :", data);
+    if (document.currentScript && document.currentScript.src) {
+        fetch('savescore.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `pseudo=${encodeURIComponent(pseudo)}&score=${score}&unit=${encodeURIComponent(unit)}&jeu=${encodeURIComponent(jeu)}`
         })
-        .catch(error => console.error("Erreur :", error));
+            .then(response => response.text())
+            .then(data => {
+                console.log("Score enregistré :", data);
+            })
+            .catch(error => console.error("Erreur :", error));
+    } else {
+        console.error("L'appel doit venir d'un fichier JavaScript externe.");
+    }
 }
