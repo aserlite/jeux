@@ -18,9 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $score = floatval($_POST['score']);
     $jeu = htmlspecialchars($_POST['jeu']);
     $unit = htmlspecialchars($_POST['unit']);
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $date = date('Y-m-d H:i:s');
 
-    $stmt = $pdo->prepare("INSERT INTO scores (pseudo, score, jeu,unit) VALUES (?, ?, ?, ?)");
-    if ($stmt->execute([$pseudo, $score, $jeu, $unit])) {
+    $stmt = $pdo->prepare("INSERT INTO scores (pseudo, score, jeu,unit,ip,date) VALUES (?, ?, ?,?, ?, ?)");
+    if ($stmt->execute([$pseudo, $score, $jeu, $unit, $ip, $date])) {
         echo "Score enregistré !";
     } else {
         echo "Erreur lors de l'enregistrement.";
