@@ -56,17 +56,25 @@ ul {
 }
 
 li {
-    padding: 1rem 5rem 1rem .5rem;
     text-transform: uppercase;
+    max-width: 100%;
+    max-height: fit-content;
 }
 li:hover {
     background: #12ADBD;
     border-radius: 5px;
 }
+
 a {
     text-decoration: none;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
+    padding: 1rem 5rem 1rem .5rem;
     text-transform: capitalize;
+    display: block;
+}
+
+.highscore {
+    background: #999;
 }

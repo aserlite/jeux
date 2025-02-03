@@ -28,7 +28,7 @@
     </script>
 </head>
 <body>
-<h1>Les jeux</h1>
+<h1>Les jeux la</h1>
 
 <label for="pseudo">Votre pseudo :</label>
 <input type="text" id="pseudo" placeholder="Entrez votre pseudo">
@@ -53,8 +53,10 @@
         }
     }
     ?>
+    <li class="highscore">
+        <a href="highscore.php" >🏆Highscore</a>
+    </li>
 </ul>
 
-<a href="highscore.php">🏆 Voir les meilleurs scores</a>
 </body>
 </html>
