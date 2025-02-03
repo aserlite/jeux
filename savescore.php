@@ -1,4 +1,12 @@
 <?php
+$referer = $_SERVER['HTTP_REFERER'];
+$allowedReferer = 'https://jeux.arthurcuvillon.com';
+if (strpos($referer, $allowedReferer) === false) {
+    echo "Requête provenant d'une source non autorisée.";
+    die();
+}
+
+
 $env = parse_ini_file('.env');
 
 $host = $env['DB_HOST'];
