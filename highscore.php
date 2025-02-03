@@ -29,11 +29,12 @@ $games = $gamesStmt->fetchAll(PDO::FETCH_COLUMN);
         <tr><th>Pseudo</th><th>Score</th></tr>
         <?php
 
-        if(game == "timer" || game == "reaction"){
+        if($game == "timer" || $game == "reaction"){
             $stmt = $pdo->prepare("SELECT pseudo, score, unit FROM scores WHERE jeu = ? ORDER BY score ASC LIMIT 5");
         }else{
         $stmt = $pdo->prepare("SELECT pseudo, score, unit FROM scores WHERE jeu = ? ORDER BY score DESC LIMIT 5");
         }
+
         $stmt->execute([$game]);
         $scores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

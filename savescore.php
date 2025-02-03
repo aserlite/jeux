@@ -12,6 +12,7 @@ try {
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $score = floatval($_POST['score']);
