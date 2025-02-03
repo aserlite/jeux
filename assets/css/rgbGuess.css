@@ -35,7 +35,8 @@ input[type="range"] {
 
 button {
     padding: 10px 15px;
-    background-color: #28a745;
+    margin: 5px;
+    background-color: #0056b3;
     color: white;
     border: none;
     cursor: pointer;
