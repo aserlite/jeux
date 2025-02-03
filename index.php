@@ -27,7 +27,7 @@
         };
     </script>
 </head>
-<body>
+<body class="body_effects">
 <h1>Les jeux la</h1>
 
 <label for="pseudo">Votre pseudo :</label>
