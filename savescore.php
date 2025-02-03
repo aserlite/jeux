@@ -16,13 +16,26 @@ try {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pseudo = htmlspecialchars($_POST['pseudo']);
     var_dump($pseudo);
-    if (empty($pseudo) OR $pseudo === "" OR $pseudo === "null") {
-        echo "Pseudo vide !";
-        die();
-    }
     $score = floatval($_POST['score']);
     $jeu = htmlspecialchars($_POST['jeu']);
     $unit = htmlspecialchars($_POST['unit']);
+
+    if (empty($pseudo) OR $pseudo === "" OR $pseudo === "null" OR $pseudo === "undefined" OR $pseudo === "NaN") {
+        echo "Pseudo vide !";
+        die();
+    }
+    if (empty($score) OR $score === "" OR $score === "null" OR $score === "undefined" OR $score === "NaN") {
+        echo "Score vide !";
+        die();
+    }
+    if (empty($jeu) OR $jeu === "" OR $jeu === "null" OR $jeu === "undefined" OR $jeu === "NaN") {
+        echo "Jeu vide !";
+        die();
+    }
+    if (empty($unit) OR $unit === "" OR $unit === "null" OR $unit === "undefined" OR $unit === "NaN") {
+        echo "Unit vide !";
+        die();
+    }
     $ip = $_SERVER['REMOTE_ADDR'];
     $date = date('Y-m-d H:i:s');
 
