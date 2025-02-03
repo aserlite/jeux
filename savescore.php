@@ -15,6 +15,11 @@ try {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pseudo = htmlspecialchars($_POST['pseudo']);
+    var_dump($pseudo);
+    if (empty($pseudo) OR $pseudo === "" OR $pseudo === "null") {
+        echo "Pseudo vide !";
+        die();
+    }
     $score = floatval($_POST['score']);
     $jeu = htmlspecialchars($_POST['jeu']);
     $unit = htmlspecialchars($_POST['unit']);
